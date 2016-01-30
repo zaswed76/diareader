@@ -4,6 +4,7 @@
 from pyunpack import Archive
 
 rar = "/home/serg/Документы/dia/Диафильмы_JPEG/Дракон и геркулесовая каша (1973).rar"
+EXTRACT_DIAFILM = "../resources/extract_diafilm"
 
 # Archive(rar).extractall("/home/serg/Документы/dia")
 #
@@ -25,3 +26,12 @@ class Rar(RarFile):
 class Unrar_directory:
     def __init__(self, dir):
         pass
+
+
+if __name__ == '__main__':
+    rar_file = "/home/serg/Документы/dia/Диафильмы_JPEG/Дракон и геркулесовая каша (1973).rar"
+    rar = Rar(rar_file)
+
+
+    rar.extract(rar.infolist()[0], path=EXTRACT_DIAFILM)
+
