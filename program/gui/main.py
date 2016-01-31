@@ -1,69 +1,61 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 import sys
 
-from PyQt5 import QtWidgets, QtGui, QtCore
-from program.libs import imagesize
+from PyQt5 import QtWidgets, QtCore
 
-_cfg = dict(
-        thumbnail="/home/serg/project/diareader/program/resources/thumbnail/Дракон и геркулесовая каша (1973)"
-)
+from program.gui import diawidget
 
 
-class ThumbLabel(QtWidgets.QLabel):
-    def __init__(self, num):
-        super().__init__()
-        # self.setScaledContents(True)
-        self.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignRight)
-        self.num = num
-        police = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Expanding,
-            QtWidgets.QSizePolicy.Expanding)
-        self.setSizePolicy(police)
-        self.setNum(self.num)
-
-    def set_image(self, pth):
-        self.setPixmap(QtGui.QPixmap(pth))
-
-        # pxm = QtGui.QPixmap(img)
-        # self.setFixedSize(200, 200)
-        # print(pxm.size())
-        # self.setPixmap(pxm)
-
-        # self.check = QtWidgets.QCheckBox(self)
+class ToolTeg(QtWidgets.QToolBar):
+    def __init__(self, *__args):
+        super().__init__(*__args)
+        self.setAllowedAreas(
+            QtCore.Qt.LeftToolBarArea | QtCore.Qt.RightToolBarArea)
+        self.setFixedWidth(40)
+        self.setFloatable(False)
 
 
-class WidgetGrid(QtWidgets.QWidget):
+class ToolControl(QtWidgets.QToolBar):
+    def __init__(self, *__args):
+        super().__init__(*__args)
+        self.setFixedHeight(30)
+        self.setAllowedAreas(
+            QtCore.Qt.TopToolBarArea | QtCore.Qt.BottomToolBarArea)
+        self.setFixedHeight(40)
+        self.setFloatable(False)
+
+class Main(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.thumb_label = {}
+        self.central_widget = QtWidgets.QFrame()
+        self.setCentralWidget(self.central_widget)
+        self.resize(500, 500)
 
-    def ceate_gtrid(self, lines, column):
-        grid = QtWidgets.QGridLayout(self)
-        num_lab = 0
-        for x in range(lines):
-            for y in range(column):
-                self.thumb_label[num_lab] = ThumbLabel(num_lab)
-                grid.addWidget(self.thumb_label[num_lab], x, y)
-                num_lab += 1
+        self.dia_widget = diawidget.WidgetGrid(self)
+        self.stack = QtWidgets.QStackedLayout(self.central_widget)
+        self.stack.addWidget(self.dia_widget)
 
-    def next_page(self):
-        lst_file = imagesize.collect_files(_cfg["thumbnail"], ["jpg"])
-        for n, widget in enumerate(self.thumb_label.values()):
-            widget.set_image(lst_file[n])
+    def create_tool_teg(self):
+        self.tool_teg = ToolTeg(self)
+        self.addToolBar(QtCore.Qt.LeftToolBarArea, self.tool_teg)
 
-
-
+    def create_tool_controll(self):
+        self.tool_controll = ToolControl(self)
+        self.addToolBar(QtCore.Qt.TopToolBarArea, self.tool_controll)
 
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     app.setStyleSheet(open('../css/base.css').read())
-    main = WidgetGrid()
-    main.resize(500, 500)
-    main.ceate_gtrid(3, 4)
-    main.next_page()
-    main.show()
+    main = Main()
 
+    main = Main()
+    main.dia_widget.ceate_gtrid(3, 4)
+    main.dia_widget.next_page()
+    main.show()
+    main.create_tool_teg()
+    main.create_tool_controll()
     sys.exit(app.exec_())

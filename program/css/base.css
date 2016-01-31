@@ -1,6 +1,42 @@
 
 ThumbLabel {
-    border: 1px solid gray;
+    border-top: 1px solid #b1b1b1;
+    border-right: 1px solid #b1b1b1;
+    border-bottom: 1px solid #b1b1b1;
+    border-left: none;
+}
+
+ThumbBox{
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    border-radius: 4px;
 }
 
 
+TextLabel{
+    border-top: none;
+    border-right: 1px solid #b1b1b1;
+    border-bottom: 1px solid #b1b1b1;
+    border-left: none;
+    background: #e8e8e8;
+
+}
+
+ThumbControll{
+    border-top: 1px solid #b1b1b1;
+    border-right: 1px solid #b1b1b1;
+    border-bottom: 1px solid #b1b1b1;
+    border-left: 1px solid #b1b1b1;
+    background: rgba(221, 221, 224, 0.36);
+
+}
+
+ToolTeg {
+    background: #cecece;
+}
+
+ToolControl {
+    background: #cecece;
+}
