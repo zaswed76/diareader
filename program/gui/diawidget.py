@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import os
+import textwrap
 
 from PyQt5 import QtWidgets, QtGui, QtCore
 
 from program.libs import imagesize
 
 _cfg = dict(
-        thumbnail="/home/vostro/project/diareader/program/resources/thumbnail/Гном Гномыч и Изюмка (1986)"
+        thumbnail="/home/vostro/project/diareader/program/resources/thumbnail"
 )
 
 class ThumbControll(QtWidgets.QFrame):
@@ -40,6 +42,11 @@ class TextLabel(QtWidgets.QLabel):
                 QtWidgets.QSizePolicy.Minimum)
         self.setSizePolicy(police)
         # self.setStyleSheet("background-color: grey")
+    def _setText(self, p_str):
+        text_obj = textwrap.TextWrapper(width=18, max_lines=2)
+
+
+        self.setText("\n".join(text_obj.wrap(p_str)))
 
 
 class ThumbBox(QtWidgets.QFrame):
@@ -76,7 +83,7 @@ class ThumbBox(QtWidgets.QFrame):
         self.thumb.setPixmap(QtGui.QPixmap(pth))
 
     def set_text(self, text):
-        self.label.setText(text)
+        self.label._setText(text)
 
 
 
@@ -101,10 +108,11 @@ class WidgetGrid(QtWidgets.QWidget):
                 num_lab += 1
 
     def next_page(self):
-        lst_file = imagesize.collect_files(_cfg["thumbnail"], ["jpg"])
+        lst_file = os.listdir(_cfg["thumbnail"])
         for n, widget in enumerate(self.thumb_label.values()):
-            widget.set_image(lst_file[n])
-            widget.set_text("Гном Гномыч и Изюмка (1986)\nГном Гномыч и Изюмка (1986)")
+            name = os.path.splitext(lst_file[n])[0]
+            widget.set_image(os.path.join(_cfg["thumbnail"], lst_file[n]))
+            widget.set_text(name)
 
 
 if __name__ == '__main__':

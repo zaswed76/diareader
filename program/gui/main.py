@@ -4,9 +4,14 @@
 
 import sys
 
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets, QtCore, QtGui
 
 from program.gui import diawidget
+
+class Action(QtWidgets.QAction):
+    def __init__(self, *__args, obgect_name=None):
+        super().__init__(*__args)
+        self.setObjectName(obgect_name)
 
 
 class ToolTeg(QtWidgets.QToolBar):
@@ -26,6 +31,16 @@ class ToolControl(QtWidgets.QToolBar):
             QtCore.Qt.TopToolBarArea | QtCore.Qt.BottomToolBarArea)
         self.setFixedHeight(40)
         self.setFloatable(False)
+
+
+        self.exit_act = Action(self, obgect_name="exit_program")
+        self.exit_act.setIcon(QtGui.QIcon("resources/icons/exit.png"))
+
+
+
+
+        self.addAction(self.exit_act)
+
 
 class Main(QtWidgets.QMainWindow):
     def __init__(self):

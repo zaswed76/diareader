@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from pyunpack import Archive
+
 
 rar = "/home/serg/Документы/dia/Диафильмы_JPEG/Дракон и геркулесовая каша (1973).rar"
 EXTRACT_DIAFILM = "../resources/extract_diafilm"

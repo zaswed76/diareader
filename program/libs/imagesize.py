@@ -40,7 +40,7 @@ def resize_dir(direct, target, size, ext=FILEEXTENSIONS):
 
 
 if __name__ == '__main__':
-    size = 160
+    size = 140
     source_dir = "/home/vostro/Загрузки/диа/Диафильмы_JPEG/Гном Гномыч и Изюмка (1986)"
     target_dir = "/home/vostro/project/diareader/program/resources/thumbnail"
     resize_dir(source_dir, target_dir, size)
