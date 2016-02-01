@@ -53,6 +53,6 @@ if __name__ == '__main__':
     target_dir = "/home/vostro/project/diareader/program/resources/thumbnail"
     m = Miniature()
     files = m.files_for_thumbnails(dia_dir, 0)
-    m.create_thumbnails(files, target_dir, 140)
+    m.create_thumbnails(files, target_dir, 165)
 
         # m.www(dia_dir)

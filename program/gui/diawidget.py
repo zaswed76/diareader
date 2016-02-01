@@ -34,19 +34,22 @@ class ThumbLabel(QtWidgets.QLabel):
 class TextLabel(QtWidgets.QLabel):
     def __init__(self):
         super().__init__()
-        self.setScaledContents(True)
+        # self.setScaledContents(True)
         self.setAlignment(QtCore.Qt.AlignCenter)
 
         police = QtWidgets.QSizePolicy(
                 QtWidgets.QSizePolicy.Minimum,
-                QtWidgets.QSizePolicy.Minimum)
-        self.setSizePolicy(police)
+                QtWidgets.QSizePolicy.Expanding)
+        # self.setSizePolicy(police)
         # self.setStyleSheet("background-color: grey")
     def _setText(self, p_str):
-        text_obj = textwrap.TextWrapper(width=18, max_lines=2)
+        text_obj = textwrap.TextWrapper(width=25, max_lines=2, placeholder="...")
+        dedented_text = textwrap.dedent(p_str).strip()
+        t = text_obj.fill(dedented_text)
+        if len(t) <= 25:
+            t += "\n "
 
-
-        self.setText("\n".join(text_obj.wrap(p_str)))
+        self.setText(t)
 
 
 class ThumbBox(QtWidgets.QFrame):
@@ -67,8 +70,8 @@ class ThumbBox(QtWidgets.QFrame):
         box.setSpacing(0)
         box.setContentsMargins(0, 0, 0, 0)
 
-        box.addWidget(self.thumb, stretch=7)
-        box.addWidget(self.label, stretch=1)
+        box.addWidget(self.thumb, stretch=10)
+        box.addWidget(self.label, stretch=3)
         return box
 
     @property
@@ -76,7 +79,7 @@ class ThumbBox(QtWidgets.QFrame):
         return self.controller
 
     def create_widget(self):
-        self.box.addWidget(self.controller_box)
+        # self.box.addWidget(self.controller_box)
         self.box.addLayout(self.label_box)
 
     def set_image(self, pth):

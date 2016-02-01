@@ -1,26 +1,30 @@
 
 ThumbLabel {
-    border-top: 1px solid #b1b1b1;
-    border-right: 1px solid #b1b1b1;
-    border-bottom: 1px solid #b1b1b1;
-    border-left: none;
-}
-
-ThumbBox{
     border-top: none;
     border-right: none;
     border-bottom: none;
     border-left: none;
+}
+
+ThumbBox{
+    border-top: 1px solid #b1b1b1;
+    border-right: 1px solid #b1b1b1;
+    border-bottom: 1px solid #b1b1b1;
+    border-left: 1px solid #b1b1b1;
     border-radius: 4px;
 }
 
 
 TextLabel{
-    border-top: none;
-    border-right: 1px solid #b1b1b1;
-    border-bottom: 1px solid #b1b1b1;
+    border-top: 1px solid #dddddd;
+    border-right: none;
+    border-bottom: none;
     border-left: none;
-    background: #e8e8e8;
+    /*background: #e8e8e8;*/
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-top: 3px;
+    margin-bottom: 1px;
 
 }
 
