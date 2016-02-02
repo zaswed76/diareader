@@ -20,13 +20,6 @@ class EmptyWidget(QtWidgets.QWidget):
 
 
 
-
-        # spacer = QtWidgets.QSpacerItem(20, 40,
-        #                                QtWidgets.QSizePolicy.Expanding,
-        #                                QtWidgets.QSizePolicy.Expanding)
-        # box.addSpacerItem(spacer)
-
-
 class Action(QtWidgets.QAction):
     def __init__(self, *__args, obgect_name=None):
         super().__init__(*__args)
@@ -98,7 +91,7 @@ if __name__ == '__main__':
 
     main = Main()
     main.dia_widget.ceate_gtrid(3, 4)
-    main.dia_widget.next_page()
+    # main.dia_widget.next_page()
     main.show()
     main.create_tool_teg()
     main.create_tool_controll()

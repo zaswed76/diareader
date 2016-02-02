@@ -10,10 +10,10 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 from program.libs import imagesize
 
 _cfg = dict(
-        thumbnail="/home/vostro/project/diareader/program/resources/thumbnail"
+        thumbnail="resources/thumbnail"
 )
 
-class ThumbControll(QtWidgets.QFrame):
+class TegPanel(QtWidgets.QFrame):
     def __init__(self):
         super().__init__()
         self.setMinimumWidth(30)
@@ -52,17 +52,17 @@ class TextLabel(QtWidgets.QLabel):
         self.setText(t)
 
 
-class ThumbBox(QtWidgets.QFrame):
+class DiaFilm(QtWidgets.QFrame):
     def __init__(self):
         super().__init__()
         self.thumb = ThumbLabel()
         self.label = TextLabel()
-        self.controller = ThumbControll()
+        self._teg_panel = TegPanel()
         self.box = QtWidgets.QHBoxLayout(self)
         self.box.setSpacing(0)
         self.box.setContentsMargins(0, 0, 0, 0)
 
-        self.create_widget()
+        self._create_widget()
 
     @property
     def label_box(self):
@@ -75,11 +75,11 @@ class ThumbBox(QtWidgets.QFrame):
         return box
 
     @property
-    def controller_box(self):
-        return self.controller
+    def teg_panel(self):
+        return self._teg_panel
 
-    def create_widget(self):
-        # self.box.addWidget(self.controller_box)
+    def _create_widget(self):
+        self.box.addWidget(self.teg_panel)
         self.box.addLayout(self.label_box)
 
     def set_image(self, pth):
@@ -106,7 +106,7 @@ class WidgetGrid(QtWidgets.QWidget):
         num_lab = 0
         for x in range(lines):
             for y in range(column):
-                self.thumb_label[num_lab] = ThumbBox()
+                self.thumb_label[num_lab] = DiaFilm()
                 grid.addWidget(self.thumb_label[num_lab], x, y)
                 num_lab += 1
 
@@ -124,7 +124,7 @@ if __name__ == '__main__':
     main = WidgetGrid()
     main.resize(500, 500)
     main.ceate_gtrid(3, 4)
-    main.next_page()
+    # main.next_page()
     main.show()
 
     sys.exit(app.exec_())

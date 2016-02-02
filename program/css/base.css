@@ -6,7 +6,7 @@ ThumbLabel {
     border-left: none;
 }
 
-ThumbBox{
+DiaFilm{
     border-top: 1px solid #b1b1b1;
     border-right: 1px solid #b1b1b1;
     border-bottom: 1px solid #b1b1b1;
@@ -28,11 +28,11 @@ TextLabel{
 
 }
 
-ThumbControll{
-    border-top: 1px solid #b1b1b1;
+TegPanel {
+    border-top: none;
     border-right: 1px solid #b1b1b1;
-    border-bottom: 1px solid #b1b1b1;
-    border-left: 1px solid #b1b1b1;
+    border-bottom: none;
+    border-left: none;
     background: rgba(221, 221, 224, 0.36);
 
 }
