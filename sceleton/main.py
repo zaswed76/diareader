@@ -9,11 +9,13 @@ from PyQt5 import QtWidgets, QtCore
 class Main(QtWidgets.QMainWindow):
     def __init__(self, db_manager=None, browser=None):
         super().__init__()
+        self.resize(500, 500)
+
         self.browser = browser
         self.db_manager = db_manager
+
         self.center = QtWidgets.QWidget()
         self.setCentralWidget(self.center)
-        self.resize(500, 500)
         box = QtWidgets.QHBoxLayout(self.center)
         box.addWidget(self.browser)
 
