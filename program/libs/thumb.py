@@ -14,13 +14,12 @@ from PIL import Image
 def resize(source, target, size):
     img = Image.open(source)
     img.thumbnail((size, size), Image.ANTIALIAS)
-    print(target)
     img.save(target)
 
 
 class Miniature:
     def __init__(self):
-        self._file_exts = ["jpg", "bmp"]
+        self._file_exts = ["jpg", "bmp", 'jpeg', "JPG", 'JPEG']
 
     @property
     def file_exts(self):
@@ -34,8 +33,9 @@ class Miniature:
         diafilms_path = [os.path.join(directory, d) for d in diafilms]
         for d in diafilms_path:
             lst = [p for p in os.listdir(d) if p[-3:] in exts]
-            pth = os.path.join(d, sorted(lst)[namber])
-            num_img_path.append(pth)
+            if lst:
+                pth = os.path.join(d, sorted(lst)[namber])
+                num_img_path.append(pth)
         return num_img_path
 
     def create_thumbnails(self, file_lst, target_dir, size):
@@ -49,10 +49,10 @@ class Miniature:
 
 
 if __name__ == '__main__':
-    dia_dir = "/media/vostro/w7/serg10/Pictures/диафильмы/Диафильмы_JPEG/"
-    target_dir = "/home/vostro/project/diareader/program/resources/thumbnail"
+    dia_dir = "/media/sergk/WH/MEDIA/диафильмы/Диафильмы/Диафильмы_JPEG/"
+    target_dir = "/home/sergk/Диафильмы/миниатюры"
     m = Miniature()
     files = m.files_for_thumbnails(dia_dir, 0)
-    m.create_thumbnails(files, target_dir, 165)
+    m.create_thumbnails(files, target_dir, 240)
 
-        # m.www(dia_dir)
+
