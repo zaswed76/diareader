@@ -11,10 +11,12 @@ import os
 from PIL import Image
 
 
+
 def resize(source, target, size):
     img = Image.open(source)
     img.thumbnail((size, size), Image.ANTIALIAS)
     img.save(target)
+    print("создан файл - {}".format(target))
 
 
 class Miniature:
@@ -50,10 +52,10 @@ class Miniature:
 
 if __name__ == '__main__':
     pass
-    # dia_dir = "/media/sergk/WH/MEDIA/диафильмы/Диафильмы/Диафильмы_JPEG/"
-    # target_dir = "/home/sergk/Диафильмы/миниатюры"
-    # m = Miniature()
-    # files = m.files_for_thumbnails(dia_dir, 0)
-    # m.create_thumbnails(files, target_dir, 240)
+    dia_dir = "/media/windows/media/диафильмы/Диафильмы_JPEG"
+    target_dir = "/home/vostro/Изображения/диафильмы_миниатюры/"
+    m = Miniature()
+    files = m.files_for_thumbnails(dia_dir, 0)
+    m.create_thumbnails(files, target_dir, 240)
 
 

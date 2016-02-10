@@ -5,7 +5,7 @@
 import os
 import subprocess
 import sys
-DIA_DIR = "/media/sergk/WH/MEDIA/диафильмы/Диафильмы/Диафильмы_JPEG"
+DIA_DIR = "/media/windows/media/диафильмы/Диафильмы_JPEG"
 
 
 

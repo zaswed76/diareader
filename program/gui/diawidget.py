@@ -115,7 +115,7 @@ class WidgetGrid(QtWidgets.QWidget):
         for n, widget in enumerate(self.thumb_label.values()):
             name = os.path.splitext(lst_file[n])[0]
             widget.set_image(os.path.join(_cfg["thumbnail"], lst_file[n]))
-            widget.set_text(name)
+            widget.create_grid(name)
 
 
 if __name__ == '__main__':
