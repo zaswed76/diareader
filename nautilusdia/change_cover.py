@@ -20,6 +20,7 @@ def create_miniature(sourse, size):
     name = os.path.basename(dir_name)
     target = os.path.join(MINIATURES, name + EXT)
     thumb.resize(sourse, target, size)
+    print("создан файл - {}".format(target))
     return target
 
 def collect_files(dir, exts):
@@ -90,8 +91,6 @@ if __name__ == '__main__':
     name_dia = sys.argv[1]
     # name_dia = "/home/vostro/Изображения/диафильмы_миниатюры/Али - мореплаватель (1988) [2ч].jpg"
     main.create_grid(name_dia)
-
-
     sys.exit(app.exec_())
 
 

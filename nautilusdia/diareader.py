@@ -5,22 +5,56 @@
 import os
 import subprocess
 import sys
-DIA_DIR = "/media/windows/media/диафильмы/Диафильмы_JPEG"
+from PyQt5 import QtWidgets
 
+import logging
+
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+handler = logging.FileHandler('logger1.log')
+handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+
+
+
+
+
+class Message(QtWidgets.QMessageBox):
+    def __init__(self, *__args):
+        super().__init__(*__args)
+
+
+
+def dia_dir(path):
+    d = os.path.dirname(path)
+
+    file = os.path.join(d, 'configy.txt')
+
+    try:
+        with open(file, "r") as f:
+            return f.readlines()[0].strip()
+    except FileNotFoundError as mass:
+        logger.info(mass)
+        sys.exit()
 
 
 def open_diafilm(path):
     command = ["mcomix", "-f"]
     base = os.path.basename(path)
     name = os.path.splitext(base)[0]
-    target = os.path.join(DIA_DIR, name)
+    target = os.path.join(dia_dir(path), name)
     command.append(target)
     subprocess.call(command)
 
 
-
 if __name__ == '__main__':
-    name_dia = sys.argv[1]
+
+    # name_dia = sys.argv[1]
+    name_dia = "/home/vostro/Изображения/диафильмы_миниатюры/Азбука на бересте (1969).jpg"
     open_diafilm(name_dia)
 
 

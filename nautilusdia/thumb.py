@@ -16,7 +16,7 @@ def resize(source, target, size):
     img = Image.open(source)
     img.thumbnail((size, size), Image.ANTIALIAS)
     img.save(target)
-    print("создан файл - {}".format(target))
+
 
 
 class Miniature:
