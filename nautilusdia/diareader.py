@@ -32,7 +32,7 @@ class Message(QtWidgets.QMessageBox):
 def dia_dir(path):
     d = os.path.dirname(path)
 
-    file = os.path.join(d, 'configy.txt')
+    file = os.path.join(d, 'config.txt')
 
     try:
         with open(file, "r") as f:
@@ -54,7 +54,7 @@ def open_diafilm(path):
 if __name__ == '__main__':
 
     # name_dia = sys.argv[1]
-    name_dia = "/home/vostro/Изображения/диафильмы_миниатюры/Азбука на бересте (1969).jpg"
+    name_dia = '/home/sergk/Диафильмы/миниатюры/Ай да молодец! (1987).jpg'
     open_diafilm(name_dia)
 
 

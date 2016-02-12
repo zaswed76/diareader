@@ -12,8 +12,8 @@ import thumb
 _file_exts = ["jpg", "bmp", 'jpeg', "JPG", 'JPEG']
 
 EXT = ".jpg"
-DIA_DIR = "/media/windows/media/диафильмы/Диафильмы_JPEG"
-MINIATURES = "/home/vostro/Изображения/диафильмы_миниатюры"
+DIA_DIR = "/media/sergk/WH/MEDIA/диафильмы/Диафильмы/Диафильмы_JPEG"
+MINIATURES = "/home/sergk/Диафильмы/миниатюры"
 
 def create_miniature(sourse, size):
     dir_name = os.path.dirname(sourse)
@@ -82,14 +82,14 @@ class Widget(QtWidgets.QLabel):
 
 
 if __name__ == '__main__':
-    with open("file.txt", "w") as f:
-        pass
+    # with open("file.txt", "w") as f:
+    #     pass
 
     app = QtWidgets.QApplication(sys.argv)
     main = Widget()
     main.show()
     name_dia = sys.argv[1]
-    # name_dia = "/home/vostro/Изображения/диафильмы_миниатюры/Али - мореплаватель (1988) [2ч].jpg"
+    # name_dia = '/home/sergk/Диафильмы/миниатюры/Щедрый ёжик. Сластёнка (1977).jpg'
     main.create_grid(name_dia)
     sys.exit(app.exec_())
 
